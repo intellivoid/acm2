@@ -1,6 +1,9 @@
 clean:
 	rm -rf build
 
+update:
+	ppm --generate-package="src/acm2"
+
 build:
 	mkdir build
 	ppm --compile="src/acm2" --directory="build"
