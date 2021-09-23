@@ -1,0 +1,37 @@
+{
+    "package": {
+        "package_name": "net.intellivoid.acm2",
+        "name": "Advanced Configuration Manager v2",
+        "version": "1.0.0.0",
+        "author": "Zi Xing Narrakas",
+        "organization": "Intellivoid Technologies",
+        "description": "Stores and manages configuration files on the system using ACM File Format",
+        "url": "https://github.com/Intellivoid/acm2",
+        "dependencies": [],
+        "configuration": {
+            "autoload_method": "generated_spl",
+            "main": null,
+            "post_installation": [],
+            "pre_installation": []
+        }
+    },
+    "components": [
+        {
+            "required": true,
+            "file": "acm2.php"
+        },
+        {
+            "required": true,
+            "file": "Exceptions/ConfigurationFolderNotFoundException.php"
+        },
+        {
+            "required": true,
+            "file": "Exceptions/ConfigurationNotDefinedException.php"
+        },
+        {
+            "required": true,
+            "file": "Objects/Schema.php"
+        }
+    ],
+    "files": []
+}
