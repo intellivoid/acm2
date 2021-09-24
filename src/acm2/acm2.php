@@ -42,11 +42,13 @@
             $vendor = strtolower($vendor);
             $this->VendorName = $vendor;
 
-            $this->WorkingDirectory = DIRECTORY_SEPARATOR . 'var' . DIRECTORY_SEPARATOR . 'acm';
+            $this->WorkingDirectory = DIRECTORY_SEPARATOR . 'etc' . DIRECTORY_SEPARATOR . 'acm';
             $this->MasterConfigurationPath = $this->WorkingDirectory . DIRECTORY_SEPARATOR . $this->VendorName . '.json';
 
             if(file_exists($this->WorkingDirectory) == false)
                 throw new ConfigurationFolderNotFoundException('The configuration folder \'' . $this->WorkingDirectory . '\' was not found');
+
+            $this->reloadConfiguration();
         }
 
         /**
@@ -69,7 +71,7 @@
                 return;
             }
 
-            $this->Configuration = json_decode(file_get_contents($this->MasterConfigurationPath));
+            $this->Configuration = json_decode(file_get_contents($this->MasterConfigurationPath), true);
         }
 
         /**

@@ -33,5 +33,7 @@
             "file": "Objects/Schema.php"
         }
     ],
-    "files": []
+    "files": [
+        "package.json"
+    ]
 }
