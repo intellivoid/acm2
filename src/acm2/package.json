@@ -2,7 +2,7 @@
     "package": {
         "package_name": "net.intellivoid.acm2",
         "name": "Advanced Configuration Manager v2",
-        "version": "1.0.0.0",
+        "version": "1.0.0.1",
         "author": "Zi Xing Narrakas",
         "organization": "Intellivoid Technologies",
         "description": "Stores and manages configuration files on the system using ACM File Format",
