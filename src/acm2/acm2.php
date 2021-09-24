@@ -90,7 +90,7 @@
          *
          * @param Schema $schema
          */
-        public function defineSchema(Schema $schema)
+        public function defineSchema(Schema $schema, bool $update=false)
         {
             if($this->Configuration == null)
                 $this->reloadConfiguration();
@@ -109,7 +109,8 @@
                 }
             }
 
-            $this->updateConfiguration();
+            if($update)
+                $this->updateConfiguration();
         }
 
         /**
