@@ -82,6 +82,9 @@
             if($this->Configuration == null)
                 $this->reloadConfiguration();
 
+            $this->Configuration['file_type'] = 'acm_json';
+            $this->Configuration['file_version'] = '2.0.0.0';
+
             // Get in-memory hash
             $memory_hash = hash('crc32', json_encode($this->Configuration, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
 
@@ -98,6 +101,7 @@
          * Defines a new schema in the configuration
          *
          * @param Schema $schema
+         * @param bool $update
          */
         public function defineSchema(Schema $schema, bool $update=false)
         {
