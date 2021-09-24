@@ -82,6 +82,15 @@
             if($this->Configuration == null)
                 $this->reloadConfiguration();
 
+            // Get in-memory hash
+            $memory_hash = hash('crc32', json_encode($this->Configuration, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+
+            // Get configuration hash
+            $configuration_hash = hash_file('crc32', $this->MasterConfigurationPath);
+
+            if($memory_hash == $configuration_hash)
+                return;
+
             file_put_contents($this->MasterConfigurationPath, json_encode($this->Configuration, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
         }
 
