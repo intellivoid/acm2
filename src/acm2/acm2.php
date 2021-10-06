@@ -142,6 +142,22 @@
         }
 
         /**
+         * Updates a configuration value
+         *
+         * @param string $name
+         * @param string $config_name
+         * @param string $config_value
+         * @throws ConfigurationNotDefinedException
+         */
+        public function updateConfigurationValue(string $name, string $config_name, string $config_value)
+        {
+            if(isset($this->Configuration['configuration'][$name]) == false)
+                throw new ConfigurationNotDefinedException($name . ' is not defined in the configuration');
+            $this->Configuration['configuration'][$name][$config_name] = $config_value;
+            file_put_contents($this->MasterConfigurationPath, json_encode($this->Configuration, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+        }
+
+        /**
          * @return string
          */
         public function getMasterConfigurationPath(): string
