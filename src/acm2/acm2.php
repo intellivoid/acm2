@@ -72,6 +72,25 @@
             }
 
             $this->Configuration = json_decode(file_get_contents($this->MasterConfigurationPath), true);
+
+            // Preform an upgrade
+            if($this->Configuration['file_version'] == '1.0.0.0')
+            {
+                $this->Configuration['file_version'] = '2.0.0.0.0';
+
+                if(isset($this->Configuration['configurations']))
+                {
+                    $this->Configuration['configuration'] = $this->Configuration['configurations'];
+                    unset($this->Configuration['configurations']);
+                }
+
+                if(isset($this->Configuration['schemas']))
+                {
+                    unset($this->Configuration['schemas']);
+                }
+
+                file_put_contents($this->MasterConfigurationPath, json_encode($this->Configuration, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+            }
         }
 
         /**
